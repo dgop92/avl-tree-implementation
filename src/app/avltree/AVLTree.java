@@ -10,8 +10,8 @@ public class AVLTree {
         this.root = null;
     }
 
-    public void insertNode(int data){
-        addNode(this.root, data);
+    public void insert(int data){
+        this.root = addNode(this.root, data);
     }
 
     public void inOrderTraversal(Consumer<Node> action){
