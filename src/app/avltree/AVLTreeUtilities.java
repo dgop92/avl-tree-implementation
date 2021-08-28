@@ -35,5 +35,21 @@ public class AVLTreeUtilities {
 
         return getHeight(root.left) - getHeight(root.right);
     }
+    
+    /**
+     * obtain the node with the minimum value of a tree
+     * 
+     * @param root a {@code Node}
+     * @return node with minimum value
+     */
+    public static Node minimunNodeOfTree(Node root) {
+        Node current = root;
+
+        if (current.left != null) {
+            current = current.left;
+        }
+
+        return current;
+    }
 
 }
