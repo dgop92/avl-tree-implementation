@@ -14,6 +14,13 @@ public class AVLTree {
     }
 
     /**
+     * Set the root of the tree to null. Deleting all the data
+     */
+    public void clean() {
+        this.root = null;
+    }
+
+    /**
      * Insert a new data into the tree
      *
      * @param data an int value
@@ -49,6 +56,41 @@ public class AVLTree {
     }
 
     /**
+     * Traverse the tree using preOrder traversal
+     *
+     * @param action A callback function with the node being proecced
+     */
+    public void preOrderTraversal(Consumer<Node> action) {
+        preOrder(this.root, action);
+    }
+
+    private void preOrder(Node root, Consumer<Node> action) {
+        if (root != null) {
+            action.accept(root);
+            preOrder(root.left, action);
+            preOrder(root.right, action);
+        }
+
+    }
+
+    /**
+     * Traverse the tree using postOrder traversal
+     *
+     * @param action A callback function with the node being proecced
+     */
+    public void postOrderTraversal(Consumer<Node> action) {
+        postOrder(this.root, action);
+    }
+
+    private void postOrder(Node root, Consumer<Node> action) {
+        if (root != null) {
+            preOrder(root.left, action);
+            preOrder(root.right, action);
+            action.accept(root);
+        }
+    }
+
+    /**
      * Find node given its data attribute
      *
      * @param action A callback function with the node being proecced
@@ -58,15 +100,23 @@ public class AVLTree {
     }
 
     private Node search(int data, Node root) {
-        if (root != null) {
+        // this algorithm runs the tree while the root is not equal to null,
+        // using the BST rules
+        while (root != null) {
             if (data > root.data) {
-                search(data, root.right);
+                root = root.right;
             } else if (data < root.data) {
-                search(data, root.left);
+                root = root.left;
             } else {
+
+                // if it's not > or < then it's the same and that case
+                // we return that node
                 return root;
             }
         }
+
+        // finally return the node searched or in case of it doesn´t appears
+        // it returns null
         return root;
     }
 
@@ -77,7 +127,7 @@ public class AVLTree {
             return "";
         }
 
-        // breadth first search with modifications 
+        // breadth first search with modifications
         // to save the indexes of the nodes
 
         Queue<Node> queue = new LinkedList<>();
@@ -104,7 +154,7 @@ public class AVLTree {
             }
         }
 
-        // create the array representation 
+        // create the array representation
         String arrayRepresentation = this.root.data + ",";
         for (int i = 1; i < indexes.size(); i++) {
             int previous = indexes.get(i - 1);
@@ -130,8 +180,7 @@ public class AVLTree {
         if (arrayRepresentation.equals("")) {
             throw new Exception("Empty tree");
         }
-        String url =
-            "https://dgop92.github.io/binary-tree-builder/?indextree=%s";
+        String url = "https://dgop92.github.io/binary-tree-builder/?indextree=%s";
         return String.format(url, arrayRepresentation);
     }
 
@@ -182,26 +231,52 @@ public class AVLTree {
         return root;
     }
 
-    public Node deleteNode(Node root, int data) {
+    private Node deleteNode(Node root, int data) {
+
+        // return null if the node doesn't esxist
         if (root == null) {
             return root;
         }
 
+        /*
+         * we proceed to search the node comparing the given value with the value of
+         * each node visited, following the rules of the BST variant
+         */
         if (data < root.data) {
             root.left = deleteNode(root.left, data);
         } else if (data > root.data) {
             root.right = deleteNode(root.right, data);
         } else {
+
+            /**
+             * when the node is found, we follow with the elimination depending of the case:
+             * if it's a leaf node, a node with one child or one node with two childs
+             */
+
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
 
-            Node minNode = AVLTreeUtilities.minimunNodeOfTree(root.right);
-            root.data = minNode.data;
-            root.right = deleteNode(root.right, minNode.data);
+            /*
+             * if the node has not a null link, it means the node has two childs; in that
+             * case we search the minimun node of the Tree, after we change the data in the
+             * node to delete and we finally eliminate the node that replaced the original
+             * one
+             */
+
+            Node minNode = AVLTreeUtilities.minimunNodeOfTree(root.right); // Search the minimun
+            root.data = minNode.data; // change the value of original for the minimun
+            root.right = deleteNode(root.right, minNode.data); // Deleting the minimun node
         }
+
+        /*
+         * Later to do the delete operation we run the ancestors of the modified node
+         * seing if there is a change in the height of these, getting their BF or
+         * balance factor, if the BF of some ancestor node is not between -1 and 1, we
+         * do the respective rotations; whether simple, doble, left or right.
+         */
 
         // The following code is executed while backtracking to the tree root
 
@@ -235,8 +310,6 @@ public class AVLTree {
 
         return root;
     }
-
-    
 
     private Node rightRotate(Node unbalancedNode) {
         Node newRoot = unbalancedNode.left;
