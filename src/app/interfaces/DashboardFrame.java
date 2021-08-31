@@ -53,6 +53,9 @@ public class DashboardFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton_Print = new javax.swing.JButton();
         output_textarea = new javax.swing.JTextArea();
+        jTextField_Height = new javax.swing.JTextField();
+        jButton_Delete1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +104,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         jLabel3.setText("Nodo a eliminar");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nodo a buscar");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
@@ -132,6 +136,18 @@ public class DashboardFrame extends javax.swing.JFrame {
         output_textarea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)), javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         output_textarea.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
+        jButton_Delete1.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        jButton_Delete1.setText("Height");
+        jButton_Delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnHeight(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Altura Nodo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,24 +161,29 @@ public class DashboardFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_Insert)
                             .addComponent(jLabel2))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
+                        .addGap(12, 12, 12)
                         .addComponent(jButton_Delete)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField_Height, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton_Delete1))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Search, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addComponent(jButton_Search)
                         .addGap(62, 62, 62))))
             .addComponent(output_textarea)
@@ -180,7 +201,7 @@ public class DashboardFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jButton_Print)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,20 +213,31 @@ public class DashboardFrame extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addGap(79, 79, 79)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Node, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Insert)
-                    .addComponent(jButton_Delete)
-                    .addComponent(jButton_Search))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField_Node, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_Insert)
+                            .addComponent(jButton_Search)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(23, 23, 23)
+                        .addComponent(jTextField_Height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton_Delete1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(23, 23, 23)
+                        .addComponent(jTextField_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton_Delete)))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -302,6 +334,7 @@ public class DashboardFrame extends javax.swing.JFrame {
         if(isDataValid(jTextField_Delete.getText())){
             int data = Integer.parseInt(jTextField_Delete.getText());
             avlTree.delete(data);
+            jTextField_Delete.setText("");
         }
     }//GEN-LAST:event_OnDelete
 
@@ -321,6 +354,31 @@ public class DashboardFrame extends javax.swing.JFrame {
             infoDialog.setVisible(true);
         } 
     }//GEN-LAST:event_OnWeb
+
+    private void OnHeight(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnHeight
+        if(isDataValid(jTextField_Height.getText())){
+            int data = Integer.parseInt(jTextField_Height.getText());
+            Node node = avlTree.searchNode(data);
+            if (node != null){
+                InfoDialog infoDialog = new InfoDialog(
+                    this,
+                    "Exito",
+                    "El nodo encontrado tiene altura de: " + node.height, 
+                    InfoDialog.TypeInfoDialog.SUCCESS_DIALOG
+                );
+                infoDialog.setVisible(true);
+            }else{
+                InfoDialog infoDialog = new InfoDialog(
+                    this,
+                    "Info",
+                    "El nodo no fue encontrado", 
+                    InfoDialog.TypeInfoDialog.INFO_DIALOG
+                );
+                infoDialog.setVisible(true);
+            }
+            jTextField_Height.setText("");
+        }
+    }//GEN-LAST:event_OnHeight
 
     private boolean isDataValid(String rawData) {
         String errorMessage = "";
@@ -407,6 +465,7 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Delete;
+    private javax.swing.JButton jButton_Delete1;
     private javax.swing.JButton jButton_Insert;
     private javax.swing.JButton jButton_Print;
     private javax.swing.JButton jButton_Search;
@@ -417,9 +476,11 @@ public class DashboardFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_Delete;
+    private javax.swing.JTextField jTextField_Height;
     private javax.swing.JTextField jTextField_Node;
     private javax.swing.JTextField jTextField_Search;
     private javax.swing.JTextArea output_textarea;
