@@ -129,7 +129,8 @@ public class DashboardFrame extends javax.swing.JFrame {
         output_textarea.setBackground(new java.awt.Color(238, 238, 238));
         output_textarea.setColumns(20);
         output_textarea.setRows(5);
-        output_textarea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
+        output_textarea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)), javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)));
+        output_textarea.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
