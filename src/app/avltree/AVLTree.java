@@ -41,7 +41,7 @@ public class AVLTree {
     /**
      * Traverse the tree using inOrder traversal
      *
-     * @param action A callback function with the node being proecced
+     * @param action A callback function with the node being processed
      */
     public void inOrderTraversal(Consumer<Node> action) {
         inOrder(this.root, action);
@@ -58,7 +58,7 @@ public class AVLTree {
     /**
      * Traverse the tree using preOrder traversal
      *
-     * @param action A callback function with the node being proecced
+     * @param action A callback function with the node being processed
      */
     public void preOrderTraversal(Consumer<Node> action) {
         preOrder(this.root, action);
@@ -76,7 +76,7 @@ public class AVLTree {
     /**
      * Traverse the tree using postOrder traversal
      *
-     * @param action A callback function with the node being proecced
+     * @param action A callback function with the node being processed
      */
     public void postOrderTraversal(Consumer<Node> action) {
         postOrder(this.root, action);
@@ -90,10 +90,28 @@ public class AVLTree {
         }
     }
 
+    public void levelOrderTraversal(Consumer<Node> action) {
+        int h = root.height;
+        for (int i = 0; i <= h; i++)
+            printCurrentLevel(root, i, action);
+    }
+
+    /* Print nodes at the current level */
+    private void printCurrentLevel(Node root, int level, Consumer<Node> action) {
+        if (root == null)
+            return;
+        if (level == 0)
+            action.accept(root);
+        else if (level > 0) {
+            printCurrentLevel(root.left, level - 1, action);
+            printCurrentLevel(root.right, level - 1, action);
+        }
+    }
+
     /**
      * Find node given its data attribute
      *
-     * @param action A callback function with the node being proecced
+     * @param action A callback function with the node being processed
      */
     public Node searchNode(int data) {
         return search(data, this.root);

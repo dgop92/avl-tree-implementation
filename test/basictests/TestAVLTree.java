@@ -27,6 +27,20 @@ public class TestAVLTree extends TestCase {
     }
 
     @Test
+    public void testBFSRecursive() {
+        AVLTree avlTree = new AVLTree();
+        avlTree.insert(10);
+        avlTree.insert(5);
+        avlTree.insert(3);
+        avlTree.insert(2);
+        StringBuilder stringBuilder = new StringBuilder();
+        avlTree.levelOrderTraversal(node -> {
+            stringBuilder.append(node.data);
+        });
+        assertEquals("53102", stringBuilder.toString());
+    }
+
+    @Test
     public void testSearchNode() {
         AVLTree avlTree = new AVLTree();
         avlTree.insert(10);
